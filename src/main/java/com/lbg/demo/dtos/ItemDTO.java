@@ -1,19 +1,9 @@
-package com.lbg.demo.domain;
+package com.lbg.demo.dtos;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.lbg.demo.domain.Item;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+public class ItemDTO {
 
-@Entity
-
-public class Item {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String name;
@@ -21,12 +11,19 @@ public class Item {
 	private Float price;
 
 	private Integer quantity;
-	@JsonBackReference
-	@ManyToOne
-	private Cart cart;
 
-	public Item() {
-		super();
+	private Integer cartId;
+
+	public ItemDTO(Item item) {
+		this.setId(item.getId());
+		this.setName(item.getName());
+		this.setPrice(item.getPrice());
+		this.setQuantity(item.getQuantity());
+		this.setCartId(item.getCart().getId());
+	}
+
+	public ItemDTO() {
+
 	}
 
 	public Integer getId() {
@@ -61,12 +58,12 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public Cart getCart() {
-		return cart;
+	public Integer getCartId() {
+		return cartId;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setCartId(Integer cartId) {
+		this.cartId = cartId;
 	}
 
 }
