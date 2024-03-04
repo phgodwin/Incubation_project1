@@ -70,3 +70,6 @@ public class Item {
 	}
 
 }
+//In summary, the Item class represents a database entity with an automatically generated primary key (id). 
+//It contains information about an item, including its name, price, quantity, and a reference to the associated Cart. 
+//The use of @JsonBackReference helps manage the serialization of this bidirectional relationship when converting to JSON.

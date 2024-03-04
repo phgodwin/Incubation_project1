@@ -12,7 +12,16 @@ import com.lbg.demo.repo.ItemRepo;
 
 @Service
 public class ItemService {
-
+//	The ItemService defines several methods:
+//		createItem(Item newItem): Saves a new item in the database using the ItemRepo. The newItem object is passed as an argument.
+//		It returns a ResponseEntity<Item> with the created item and an HTTP status of CREATED.
+//		getItems(): Retrieves a list of all items from the database using the ItemRepo.
+//		getItem(int id): Retrieves a specific item by its id. The ItemRepo is used to fetch the item, and a ResponseEntity is returned (which allows customizing the HTTP response).
+//		If the item is not found, it returns an HTTP status of NOT_FOUND.
+//		removeItem(int id): Deletes an item by its id. The ItemRepo is used to delete the item, and a boolean indicating success or failure is returned.
+//		updateItem(int id, Item newItem): Updates an existing item by its id. The ItemRepo is used to update the item, and a ResponseEntity is returned.
+//		If the item is not found, it returns an HTTP status of NOT_FOUND.
+//		The existing item is modified based on the properties of the newItem.
 	private ItemRepo repo;
 
 	public ItemService(ItemRepo repo) {
@@ -79,3 +88,7 @@ public class ItemService {
 
 	}
 }
+
+//In summary, the ItemService class encapsulates the business logic related to items. 
+//It interacts with the ItemRepo to perform CRUD operations on items. 
+//The actual database operations are delegated to the repository, and the service layer handles error responses and business logic
