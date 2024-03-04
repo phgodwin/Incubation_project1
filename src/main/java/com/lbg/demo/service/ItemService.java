@@ -69,6 +69,10 @@ public class ItemService {
 			existing.setQuantity(newItem.getQuantity());
 		}
 
+		if (newItem.getCart() != null) {
+			existing.setCart(newItem.getCart());
+		}
+
 		Item updated = this.repo.save(existing);
 
 		return ResponseEntity.ok(updated);
