@@ -21,6 +21,9 @@ public class Item {
 	private Float price;
 
 	private Integer quantity;
+
+	private String image;
+
 	@JsonBackReference
 	@ManyToOne
 	private Cart cart;
@@ -67,6 +70,14 @@ public class Item {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

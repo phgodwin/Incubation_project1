@@ -69,6 +69,10 @@ public class ItemService {
 			existing.setQuantity(newItem.getQuantity());
 		}
 
+		if (newItem.getImage() != null) {
+			existing.setImage(newItem.getImage());
+		}
+
 		if (newItem.getCart() != null) {
 			existing.setCart(newItem.getCart());
 		}
