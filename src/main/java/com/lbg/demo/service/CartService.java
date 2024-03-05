@@ -38,13 +38,6 @@ public class CartService {
 		return ResponseEntity.ok(found.get());
 	}
 
-//	public ResponseEntity<Cart> updateCart(int id, Cart newCart) {
-//		Optional<Cart> found = this.repo.findById(id);
-//
-//		if (found.isEmpty()) {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-
 	public boolean removeCart(int id) {
 		this.repo.deleteById(id);
 

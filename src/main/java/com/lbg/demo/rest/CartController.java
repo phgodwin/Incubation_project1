@@ -48,8 +48,4 @@ public class CartController {
 		return this.service.removeCart(id);
 	}
 
-//	@PatchMapping("/update/{id}")
-//	public ResponseEntity<Cart> updateCart(@PathVariable int id, @RequestBody Cart newCart) {
-//		return this.service.updateCart(id, newCart);
-//	}
 }
