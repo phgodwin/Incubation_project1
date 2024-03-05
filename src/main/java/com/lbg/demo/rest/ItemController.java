@@ -54,4 +54,9 @@ public class ItemController {
 		return this.service.updateItem(id, newItem);
 	}
 
+	@PatchMapping("/updateCartItem/{id}")
+	public ResponseEntity<Item> removeCartItem(@PathVariable int id) {
+		return this.service.removeCartItem(id);
+	}
+
 }

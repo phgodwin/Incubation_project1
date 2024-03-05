@@ -82,4 +82,21 @@ public class ItemService {
 		return ResponseEntity.ok(updated);
 
 	}
+
+	public ResponseEntity<Item> removeCartItem(int id) {
+
+		Optional<Item> found = this.repo.findById(id);
+
+		if (found.isEmpty()) {
+			return new ResponseEntity<Item>(HttpStatus.NOT_FOUND);
+		}
+
+		Item existing = found.get();
+
+		existing.setCart(null);
+
+		Item updated = this.repo.save(existing);
+
+		return ResponseEntity.ok(updated);
+	}
 }
