@@ -1,11 +1,11 @@
-DROP table `cart` CASCADE;
 DROP table `item` CASCADE;
+DROP table `cart` CASCADE;
 
 CREATE TABLE `cart` (
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `full_name` VARCHAR,
 `email` VARCHAR,
-`password` VARCHAR,
+`password` VARCHAR
 );
 
 CREATE TABLE `item` (
@@ -15,5 +15,5 @@ CREATE TABLE `item` (
 `price` FLOAT,
 `quantity` INT,
 `image` VARCHAR,
-FOREIGN KEY (`cart_id` REFERENCES `seller` (`id`)
+FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`)
 );
