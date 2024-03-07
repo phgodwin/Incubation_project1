@@ -61,8 +61,10 @@ public class ItemTest {
 		Thread.sleep(1000);
 
 		WebElement createButton = this.driver.findElement(By.cssSelector("#root > div > div > form > button"));
-//		this.driver.executeScript("arguments[0].scrollIntoView(true);", create);
-//		this.driver.executeScript("arguments[0].click();", create);
+//		this.driver.executeScript("arguments[0].scrollIntoView(true);", createButton);
+//		this.driver.executeScript("arguments[0].click();", createButton);
 		createButton.click();
+		Thread.sleep(1000);
+
 	}
 }
