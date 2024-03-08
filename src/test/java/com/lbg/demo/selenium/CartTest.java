@@ -37,7 +37,7 @@ public class CartTest {
 	}
 
 	@Test
-	@Order(2)
+	@Order(1)
 
 	void testAddToCart() throws InterruptedException {
 
@@ -53,27 +53,26 @@ public class CartTest {
 		WebElement resultPrice = this.driver.findElement(By.cssSelector("#root > div > div > h5:nth-child(5)"));
 		Assertions.assertEquals("£ 70.00", resultPrice.getText());
 
-	}
+		WebElement addToCart = this.driver
+				.findElement(By.cssSelector("#root > div > div > button > strong > svg > path:nth-child(2)"));
+		addToCart.click();
 
-//	@Test
-//	@Order(1)
-//	void personalisedCartTest() throws InterruptedException {
-//
-//		this.driver.get("http://localhost:3000");
-//
-//		WebElement cartPage = this.driver.findElement(By.cssSelector(
-//				"#root > nav > div > div.float-rigth.navbar-nav > a.nav-link.icon-cart > strong > svg > path"));
-//		cartPage.click();
-//		Thread.sleep(1000);
-//
-//		WebElement customerName = this.driver
-//				.findElement(By.cssSelector("#root > div > div > div.cart-container > h2"));
-//
-////		WebDriverWait hold = new WebDriverWait(driver, Duration.ofSeconds(10));
-////		hold.until(ExpectedConditions.textToBePresentInElementValue(customerName, "Augustina"));
-//
-//		Assertions.assertEquals("Agustina Di Paola's Cart", customerName.getText());
-//
-//	}
+		Thread.sleep(1000);
+
+		WebElement cartIcon = this.driver.findElement(By.cssSelector(
+				"#root > nav > div > div.float-rigth.navbar-nav > a.nav-link.icon-cart > strong > svg > path"));
+		cartIcon.click();
+
+		WebElement resultNameCart = this.driver.findElement(By
+				.cssSelector("#root > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1) > h6"));
+		Assertions.assertEquals("Boondocker 26L Overnighter Backpack - Primary", resultNameCart.getText());
+
+		WebElement resultPriceCart = this.driver.findElement(By
+				.cssSelector("#root > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2) > h6"));
+		Assertions.assertEquals("£ 70.00", resultPriceCart.getText());
+
+		WebElement nameCart = this.driver.findElement(By.cssSelector("#root > div > div > div.cart-container > h2"));
+		Assertions.assertEquals("Agustina Di Paola's Cart", nameCart.getText());
+	}
 
 }

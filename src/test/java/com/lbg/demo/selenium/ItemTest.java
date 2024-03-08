@@ -95,7 +95,6 @@ public class ItemTest {
 		WebElement resultItems = this.driver
 				.findElement(By.cssSelector("#root > div > div > div > div:nth-child(2) > div:nth-child(6)"));
 		Assertions.assertEquals("Items left: 100", resultItems.getText());
-
 	}
 
 }
