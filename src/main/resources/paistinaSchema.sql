@@ -3,17 +3,17 @@ DROP table `cart` CASCADE;
 
 CREATE TABLE `cart` (
 `id` INT PRIMARY KEY AUTO_INCREMENT,
-`full_name` VARCHAR,
-`email` VARCHAR,
-`password` VARCHAR
+`full_name` VARCHAR(255),
+`email` VARCHAR(255),
+`password` VARCHAR(255)
 );
 
 CREATE TABLE `item` (
 `id` INT PRIMARY KEY AUTO_INCREMENT,
-`cart_id` INT,
 `name` VARCHAR,
-`price` FLOAT,
+`price` INT,
 `quantity` INT,
-`image` VARCHAR,
+`image` VARCHAR(255),
+`cart_id` INT,
 FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`)
 );

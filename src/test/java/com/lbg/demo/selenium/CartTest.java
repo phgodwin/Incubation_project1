@@ -20,12 +20,10 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @TestMethodOrder(OrderAnnotation.class)
-
 @Sql(scripts = { "classpath:paistinaSchema.sql",
 		"classpath:paistinaData.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
 public class CartTest {
-
 	private RemoteWebDriver driver;
 
 	@LocalServerPort
@@ -43,16 +41,41 @@ public class CartTest {
 
 	void testAddToCart() throws InterruptedException {
 
-		this.driver.get("http://localhost:" + this.port);
+		this.driver.get("http://localhost:3000");
+		WebElement itemButton = this.driver
+				.findElement(By.cssSelector("#root > nav > div > div:nth-child(2) > a:nth-child(1)\r\n"));
+		itemButton.click();
 
-		WebElement shopPage = this.driver
-				.findElement(By.cssSelector("#root > nav > div > div:nth-child(2) > a:nth-child(2) > strong"));
-		shopPage.click();
+		String itemName = "Youth Mainframe MIPS Helmet - Black";
+		WebElement name = this.driver.findElement(By.cssSelector("#root > div > div > form > input:nth-child(2)"));
+		name.sendKeys(itemName);
 
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#root > div > div > button")));
+		String itemPrice = "100";
+		WebElement price = this.driver.findElement(By.cssSelector("#root > div > div > form > input:nth-child(4)"));
+		price.sendKeys(itemPrice);
+
+		String itemQuantity = "100";
+		WebElement quantity = this.driver.findElement(By.cssSelector("#root > div > div > form > input:nth-child(6)"));
+		quantity.sendKeys(itemQuantity);
+
+		String itemUrl = "https://i1.adis.ws/i/jpl/ti_EAHMP4AL0350_a?w=800&h=800";
+		WebElement url = this.driver.findElement(By.cssSelector("#root > div > div > form > input:nth-child(8)"));
+		url.sendKeys(itemUrl);
+		Thread.sleep(1000);
+
+		WebElement createButton = this.driver.findElement(By.cssSelector("#root > div > div > form > button"));
+		createButton.click();
 
 		Thread.sleep(1000);
+		
+		
+		WebElement shopPage = this.driver.findElement(By.cssSelector("#root > nav > div > div:nth-child(2) > a:nth-child(2) > strong"));
+		shopPage.click();
+
+
+//		Thread.sleep(1000);
+		
+		
 		WebElement addItem = this.driver.findElement(By.cssSelector("#root > div > div:nth-child(3) > button"));
 		addItem.click();
 
